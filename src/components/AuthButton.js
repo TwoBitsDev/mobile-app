@@ -1,0 +1,34 @@
+import React from 'react';
+import { Text, TouchableOpacity } from 'react-native';
+
+const Button = (props) => {
+  const { buttonStyle, textStyle } = styles;
+
+  return (
+    <TouchableOpacity onPress={props.onPress} style={props.buttonStyle}>
+      <Text style={props.buttonTextStyle}>
+        {props.children}
+      </Text>
+    </TouchableOpacity>
+  );
+};
+
+const styles = {
+  textStyle: {
+    fontSize: 25,
+    alignSelf: 'center',
+    backgroundColor: 'transparent',
+    paddingTop: 10,
+    paddingBottom: 10,
+    color: 'white',
+  },
+  buttonStyle: {
+    borderRadius: 5,
+    borderWidth: 1,
+    borderColor: 'white',
+    marginLeft: 5,
+    marginRight: 5
+  }
+};
+
+export default Button;
