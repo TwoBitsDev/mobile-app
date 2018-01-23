@@ -1,2 +1,2 @@
-export const AUTH_EMAIL_CHANGED = "auth_email_changed";
-export const AUTH_PASSWORD_CHANGED = "auth_password_changed";
+export const LOGIN_EMAIL_CHANGED = "login_email_changed";
+export const LOGIN_PASSWORD_CHANGED = "login_password_changed";

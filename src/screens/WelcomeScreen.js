@@ -17,6 +17,7 @@ import axios from 'axios';
 // Components
 import AuthButton from '../components/AuthButton';
 import ScrollViewSlide from '../components/ScrollViewSlide';
+
 // Global Variables
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 const SCREEN_HEIGHT = Dimensions.get('screen').height;
@@ -80,6 +81,7 @@ export default class WelcomeScreen extends Component {
   }
   onLoginPress = () => {
     console.log('Login Pressed');
+    this.props.navigation.navigate('login');
   }
 
   render() {
