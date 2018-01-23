@@ -21,8 +21,8 @@ export default class App extends React.Component {
 
     const MainNavigator = StackNavigator(
       {
-        welcome: { screen: WelcomeScreen },
         menu: { screen: MenuScreen }, // switch order for default loading for your project
+        welcome: { screen: WelcomeScreen },
       },
       {
         lazy: true,
