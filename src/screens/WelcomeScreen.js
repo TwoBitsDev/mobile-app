@@ -78,6 +78,7 @@ export default class WelcomeScreen extends Component {
   // Button backend
   onGetStartedPress = () => {
     console.log('Get Started Pressed');
+    this.props.navigation.navigate('getStarted');
   }
   onLoginPress = () => {
     console.log('Login Pressed');

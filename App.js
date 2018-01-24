@@ -16,6 +16,7 @@ import reducers from './src/reducers';
 import WelcomeScreen from './src/screens/WelcomeScreen';
 import LoginScreen from './src/screens/LoginScreen';
 import MenuScreen from './src/screens/MenuScreen';
+import GetStartedScreen from './src/screens/GetStartedScreen';
 
 export default class App extends React.Component {
   render() {
@@ -25,6 +26,7 @@ export default class App extends React.Component {
         welcome: { screen: WelcomeScreen },
         menu: { screen: MenuScreen }, // switch order for default loading for your project
         login: { screen: LoginScreen },
+        getStarted: { screen: GetStartedScreen },
       },
       {
         lazy: true,

@@ -3,17 +3,16 @@ import React, { Component } from 'react';
 import {
   View,
   Text,
-  ImageBackground,
   Dimensions,
   StyleSheet,
 } from 'react-native';
-import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 
 // ACs & Rs
 import {
-  loginEmailChanged,
-  loginPasswordChanged,
+  gsEmailChanged,
+  gsPwd1Changed,
+  gsPwd2Changed,
 } from '../actions';
 
 // Components
@@ -25,35 +24,34 @@ import BackButton from '../components/BackButton';
 const SCREEN_WIDTH = Dimensions.get('screen').width;
 const SCREEN_HEIGHT = Dimensions.get('screen').height;
 
-const imageLink = 'https://i.imgur.com/sMnesOA.png';
-
-const backTransition = NavigationActions.back({ key: 'welcome' });
-
 const mapStateToProps = ({ auth }) => {
-  const { login_email, login_password } = auth;
-  return { login_email, login_password };
-};
+  const { gs_email, gs_pwd1, gs_pwd2 } = auth;
+  return { gs_email, gs_pwd1, gs_pwd2 };
+}
 
-export default connect(mapStateToProps, { loginEmailChanged, loginPasswordChanged})(class LoginScreen extends Component {
-
+export default connect(mapStateToProps, {gsEmailChanged, gsPwd1Changed, gsPwd2Changed})(class GetStartedScreen extends Component {
+  /*
   static navigationOptions = {
-    headerBackTitle: "Back",
+    header: null,
   }
-
-
-
+  */
   onEmailChanged = (text) => {
-    this.props.loginEmailChanged(text);
+    this.props.gsEmailChanged(text);
   }
 
-  onPasswordChanged = (text) => {
-    this.props.loginPasswordChanged(text);
+  onPwd1Changed = (text) => {
+    this.props.gsPwd1Changed(text);
+  }
+
+  onPwd2Changed = (text) => {
+    this.props.gsPwd2Changed(text);
   }
 
   onLetsGoPress = () => {
-    console.log("Let's Go!");
-    console.log(this.props.login_email);
-    console.log(this.props.login_password);
+    console.log("Let's go (gs)!");
+    console.log(this.props.gs_email);
+    console.log(this.props.gs_pwd1);
+    console.log(this.props.gs_pwd2);
   }
 
   render() {
@@ -65,7 +63,7 @@ export default connect(mapStateToProps, { loginEmailChanged, loginPasswordChange
           placeholderColor="lightgrey"
           autocorrect={ false }
           onChangeText={ this.onEmailChanged }
-          value={ this.props.login_email }
+          value={ this.props.gs_email }
           secureTextEntry={ false }
         />
 
@@ -74,8 +72,18 @@ export default connect(mapStateToProps, { loginEmailChanged, loginPasswordChange
           placeholderText="Your password"
           placeholderColor="lightgrey"
           autocorrect={ false }
-          onChangeText={ this.onPasswordChanged }
-          value={ this.props.login_password }
+          onChangeText={ this.onPwd1Changed }
+          value={ this.props.gs_pwd1 }
+          secureTextEntry
+        />
+
+        <AuthInput
+          style={styles.textInputStyle}
+          placeholderText="Repeat password"
+          placeholderColor="lightgrey"
+          autocorrect={ false }
+          onChangeText={ this.onPwd2Changed }
+          value={ this.props.gs_pwd2 }
           secureTextEntry
         />
 
@@ -94,15 +102,8 @@ export default connect(mapStateToProps, { loginEmailChanged, loginPasswordChange
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  backgroundImageStyle: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: SCREEN_WIDTH,
-    height: SCREEN_HEIGHT,
   },
   textInputStyle: {
     height: 50,
@@ -127,25 +128,11 @@ const styles = StyleSheet.create({
 });
 
 /*
-<ImageBackground
-  source={{uri: imageLink}}
-  style={styles.backgroundImageStyle}
->
-other code
-</ImageBackground>
-
-
 <View style={{position: 'absolute', top: 25, left: 10}}>
-  <BackButton
-    style={styles.backButtonStyle}
-    onPress={this.onBackButtonPress}
-  />
+  <BackButton onPress={this.onBackButtonPress} />
 </View>
 
 onBackButtonPress = () => {
-
-  //this.props.navigation.navigate('welcome');
-  //this.props.navigation.dispatch(backTransition);
-  this.props.navigation.goBack('welcome');
+  this.props.navigation.navigate('welcome');
 }
 */
